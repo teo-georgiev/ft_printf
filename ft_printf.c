@@ -61,12 +61,11 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		num_args;
-	int		i;
 	int		len;
 
 	va_start(args, str);
 	num_args = f_num_args(str);
-	i = 0;
+	(void)num_args;
 	len = f_print_options(args, str, 0, -1);
 	va_end(args);
 	return (len);
