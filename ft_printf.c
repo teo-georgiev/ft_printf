@@ -6,7 +6,7 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:11:19 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/15 12:58:03 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:12:38 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,39 @@ static size_t	f_num_args(const char *str)
 	return (num);
 }
 
-int	f_print_options(va_list args, const char *str, int len, int i)
+static int	f_format(char format, va_list args)
 {
-	while (str[++i])
+	if (format == 'd' || format == 'i' \
+		|| format == 'c')
+		return (f_print_int(format, va_arg(args, int)));
+	else if (format == 's')
+		return (f_print_str(va_arg(args, const char *)));
+	else if (format == 'p')
+		return (f_print_address(va_arg(args, unsigned long)));
+	else if (format == 'x' || format == 'X')
+		return (f_print_hex(format, va_arg(args, unsigned int)));
+	else if (format == 'u')
+		return (f_print_unsigned_int(va_arg(args, unsigned int)));
+	else if (format == '%')
+		return (write(1, "%", 1));
+	return (1);
+}
+
+static int	f_print_options(va_list args, const char *str, int len, int i)
+{
+	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1] != '%')
+		if (str[i] == '%')
 		{
-			if (str[i + 1] == 'd' || str[i + 1] == 'i' \
-				|| str[i + 1] == 'c' || str[i + 1] == '%')
-				len += f_print_int(str[i + 1], args);
-			if (str[i + 1] == 's')
-				len += f_print_str(args);
-			if (str[i + 1] == 'p')
-				len += f_print_address((unsigned long)&args);
-			if (str[i + 1] == 'x' || str[i + 1] == 'X')
-				len += f_print_hex(str[i + 1], args);
-			if (str[i + 1] == 'u')
-				len += f_print_unsigned_int(args);
+			len += f_format(str[i + 1], args);
+			i += 2;
 		}
-		else if ((str[i] != '%' && str[i - 1] != '%') \
-			|| (str[i] == '%' && str[i + 1] == '%'))
+		else if (str[i] != '%')
 		{
-			ft_putchar_fd(str[i], 1);
+			if (write(1, &str[i], 1) == -1)
+				return (-1);
 			len++;
+			i++;
 		}
 	}
 	return (len);
@@ -66,7 +76,12 @@ int	ft_printf(const char *str, ...)
 
 	va_start(args, str);
 	num_args = f_num_args(str);
-	len = f_print_options(args, str, 0, -1);
+	if (!num_args)
+	{
+		ft_putstr_fd((char *)str, 1);
+		return (ft_strlen(str));
+	}
+	len = f_print_options(args, str, 0, 0);
 	va_end(args);
 	return (len);
 }

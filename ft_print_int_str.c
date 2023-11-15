@@ -6,7 +6,7 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 09:34:27 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/15 12:10:47 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:06:27 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,32 @@ static size_t	num_len(int num)
 	return (len);
 }
 
-size_t	f_print_int(char c, va_list args)
+size_t	f_print_int(char c, int nbr)
 {
 	size_t	len;
-	int		placeholder;
-
+	
 	len = 0;
-	placeholder = va_arg(args, int);
 	if (c == 'd' || c == 'i')
 	{
-		len = num_len(placeholder);
-		ft_putnbr_fd(placeholder, 1);
+		len = num_len(nbr);
+		ft_putnbr_fd(nbr, 1);
 	}
 	else if (c == 'c')
-	{
-		len = 1;
-		ft_putchar_fd(placeholder, 1);
-	}
+		len += write(1, &nbr, 1);
 	return (len);
 }
 
-size_t	f_print_str(va_list args)
+size_t	f_print_str(const char *str)
 {
-	size_t	len;
-	char	*placeholder;
+	size_t		len;
 
-	placeholder = va_arg(args, char *);
-	len = ft_strlen(placeholder);
-	ft_putstr_fd(placeholder, 1);
+	len = 0;
+	if (str == NULL)
+	{
+		len = write(1, "(null)", 6);
+		return (len);
+	}
+	while (str[len])
+		len += write(1, &str[len], 1);
 	return (len);
 }
