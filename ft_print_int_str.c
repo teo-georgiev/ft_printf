@@ -12,22 +12,22 @@
 
 #include "./ft_printf.h"
 
-static size_t	num_len(int num)
-{
-	size_t	len;
+// static size_t	num_len(int num)
+// {
+// 	size_t	len;
 
-	len = 0;
-	if (num == 0)
-		return (len = 1);
-	if (num < 0)
-		len = 1;
-	while (num != 0)
-	{
-		num /= 10;
-		len++;
-	}
-	return (len);
-}
+// 	len = 0;
+// 	if (num == 0)
+// 		return (len = 1);
+// 	if (num < 0)
+// 		len = 1;
+// 	while (num != 0)
+// 	{
+// 		num /= 10;
+// 		len++;
+// 	}
+// 	return (len);
+// }
 
 size_t	f_print_int(char c, int nbr)
 {
@@ -35,12 +35,9 @@ size_t	f_print_int(char c, int nbr)
 	
 	len = 0;
 	if (c == 'd' || c == 'i')
-	{
-		len = num_len(nbr);
-		ft_putnbr_fd(nbr, 1);
-	}
+		len += ft_putnbr_fd(nbr, 1);
 	else if (c == 'c')
-		len += write(1, &nbr, 1);
+		len += ft_putchar_fd(nbr, 1);
 	return (len);
 }
 

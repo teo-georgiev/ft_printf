@@ -38,22 +38,26 @@ void	test_d(char *str)
 void	test_c(char *str)
 {
 	ft_printf("Character tests:\n");
-	ft_printf("%d\n", ft_printf("Hex lower:\t%x\n", 123456789));
-	printf("%d\n", printf("Hex lower:\t%x\n", 123456789));
+	ft_printf(" %c %c %c ", '0', 0, '1');
+	printf(" %c %c %c ", '0', 0, '1');
+	//ft_printf("%d\n", ft_printf(" %c %c %c ", '0', 0, '1'));
+	//printf("%d\n", printf(" %c %c %c ", '0', 0, '1'));
 	separator();
-	ft_printf("%d\n", ft_printf("Hex upper:\t%X\n", 123456789));
-	printf("%d\n", printf("Hex upper:\t%X\n", 123456789));
-	separator();
-	ft_printf("%d\n", ft_printf("Unsigned int:\t%u\n", -10));
-	printf("%d\n", printf("Unsigned int:\t%u\n", -10));
-	separator();
+	// ft_printf("%d\n", ft_printf("Hex lower:\t%x\n", 123456789));
+	// printf("%d\n", printf("Hex lower:\t%x\n", 123456789));
+	// separator();
+	// ft_printf("%d\n", ft_printf("Hex upper:\t%X\n", 123456789));
+	// printf("%d\n", printf("Hex upper:\t%X\n", 123456789));
+	// separator();
+	// ft_printf("%d\n", ft_printf("Unsigned int:\t%u\n", -10));
+	// printf("%d\n", printf("Unsigned int:\t%u\n", -10));
+	// separator();
 }
 
 void	test_s(char *str)
 {
 	ft_printf("String tests:\n");
 	ft_printf("%d\n", ft_printf(" NULL %s NULL ", NULL));
-	printf("%d\n", printf(" NULL %s NULL ", NULL));
 	separator();
 	ft_printf("%d\n", ft_printf(" %s", "can it handle \t and \n?"));
 	printf("%d\n", printf(" %s", "can it handle \t and \n?"));
@@ -105,8 +109,8 @@ int	main(void)
 	char	*str;
 
 	str = "Lorem ipsum dolor";
-	test_s(str);
-	test_p(str);
+	test_c(str);
+	//test_p(str);
 	//test_no_format("\x01\x02\a\v\b\f\r");
 	return (0);
 }
