@@ -6,11 +6,11 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 09:34:27 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/14 10:58:33 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:10:47 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libftprintf.h"
+#include "./ft_printf.h"
 
 static size_t	num_len(int num)
 {

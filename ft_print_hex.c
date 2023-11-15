@@ -6,11 +6,11 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 09:31:24 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/14 10:56:50 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:23:35 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libftprintf.h"
+#include "./ft_printf.h"
 
 static size_t	f_convert_to_hex(unsigned long nbr, int f(int))
 {

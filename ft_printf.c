@@ -6,11 +6,11 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:11:19 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/14 11:01:43 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:58:03 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libftprintf.h"
+#include "./ft_printf.h"
 
 static size_t	f_num_args(const char *str)
 {
@@ -48,7 +48,8 @@ int	f_print_options(va_list args, const char *str, int len, int i)
 			if (str[i + 1] == 'u')
 				len += f_print_unsigned_int(args);
 		}
-		else if (str[i] != '%' && str[i - 1] != '%')
+		else if ((str[i] != '%' && str[i - 1] != '%') \
+			|| (str[i] == '%' && str[i + 1] == '%'))
 		{
 			ft_putchar_fd(str[i], 1);
 			len++;
@@ -65,7 +66,6 @@ int	ft_printf(const char *str, ...)
 
 	va_start(args, str);
 	num_args = f_num_args(str);
-	(void)num_args;
 	len = f_print_options(args, str, 0, -1);
 	va_end(args);
 	return (len);

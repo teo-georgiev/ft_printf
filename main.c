@@ -6,35 +6,37 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:11:19 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/14 11:03:31 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:57:10 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libftprintf.h"
+#include "./ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 void	separator(void)
 {
-	ft_printf("\n...........................\n");
+	ft_printf("...........................\n");
 }
 
-int	main(void)
+void	test_d(char *str)
 {
-	char	*str;
-
-	str = "Lorem ipsum dolor";
 	ft_printf("%d\n", ft_printf("Number:\t\t%d\n", 10));
 	printf("%d\n", printf("Number:\t\t%d\n", 10));
 	separator();
-	ft_printf("%d\n", ft_printf("Number:\t\t%d\n", 21474836));
-	printf("%d\n", printf("Number:\t\t%d\n", 21474836));
+	ft_printf("%d\n", ft_printf("Number:\t\t%d\n", INT_MAX));
+	printf("%d\n", printf("Number:\t\t%d\n", INT_MAX));
 	separator();
-	ft_printf("%d\n", ft_printf("Character:\t%c\n", 'T'));
-	printf("%d\n", printf("Character:\t%c\n", 'T'));
+	ft_printf("%d\n", ft_printf("Number:\t\t%d\n", INT_MIN));
+	printf("%d\n", printf("Number:\t\t%d\n", INT_MIN));
 	separator();
-	ft_printf("%d\n", ft_printf("String:\t\t%s\n", str));
-	printf("%d\n", printf("String:\t\t%s\n", str));
+	ft_printf("%d\n", ft_printf("Number:\t\t%d\n", 0));
+	printf("%d\n", printf("Number:\t\t%d\n", 0));
 	separator();
+}
+
+void	test_c(char *str)
+{
 	ft_printf("%d\n", ft_printf("Addresses:\t%p\n", str));
 	printf("%d\n", printf("Addresses:\t%p\n", str));
 	separator();
@@ -47,5 +49,53 @@ int	main(void)
 	ft_printf("%d\n", ft_printf("Unsigned int:\t%u\n", -10));
 	printf("%d\n", printf("Unsigned int:\t%u\n", -10));
 	separator();
+}
+
+void	test_s(char *str)
+{
+	return ;
+}
+
+void	test_p(char *str)
+{
+	return ;
+}
+
+void	test_x(char *str)
+{
+	return ;
+}
+
+void	test_u(char *str)
+{
+	return ;
+}
+
+void	test_percent(char *str)
+{
+	return ;
+}
+
+void	test_mix(char *str)
+{
+	return ;
+}
+
+void	test_no_format(char *str)
+{
+	ft_printf("%d\n", ft_printf("%s", str));
+	printf("%d\n", printf("%s", str));
+	return ;
+}
+
+
+int	main(void)
+{
+	char	*str;
+
+	str = "Lorem ipsum dolor";
+	// test_d(str);
+	// test_c(str);
+	test_no_format("\x01\x02\a\v\b\f\r");
 	return (0);
 }
