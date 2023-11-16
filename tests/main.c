@@ -6,7 +6,7 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:11:19 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/15 17:41:53 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:35:44 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,13 @@ void	test_mix(char *str)
 
 void	test_no_format(char *str)
 {
-	ft_printf("%d\n", ft_printf("%s", str));
-	printf("%d\n", printf("%s", str));
+	ft_printf("No format tests:\n");
+	ft_printf("%d\n", ft_printf("lorem%mipsum"));
+	printf("%d\n", printf("lorem%mipsum"));
+	separator();
+	ft_printf("%d\n", ft_printf("loremipsum%"));
+	printf("%d\n", printf("loremipsum%"));
+	separator();
 	return ;
 }
 
@@ -109,7 +114,7 @@ int	main(void)
 	char	*str;
 
 	str = "Lorem ipsum dolor";
-	test_c(str);
+	test_no_format(str);
 	//test_p(str);
 	//test_no_format("\x01\x02\a\v\b\f\r");
 	return (0);

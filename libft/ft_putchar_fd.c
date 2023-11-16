@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgeorgie <tgeorgie@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 07:41:25 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/06 08:01:30 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/16 13:41:26 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 
 int	ft_putchar_fd(char c, int fd)
 {
-	int	flag;
-	
-	flag = 0;
-	flag += write(fd, &c, 1);
-	return (flag);
+	return (write(fd, &c, sizeof(c)));
 }

@@ -6,7 +6,7 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 08:18:11 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/15 18:07:46 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:18:12 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,29 @@
 
 int	ft_putnbr_fd(int n, int fd)
 {
-	long	num;
+	long	nbr;
+	int		len;
 	int		flag;
 
-	num = n;
+	nbr = n;
+	len = 0;
 	flag = 0;
-	if (num < 0)
+	if (nbr < 0)
 	{
-		flag += ft_putchar_fd('-', fd);
-		num *= -1;
+		len = ft_putchar_fd('-', fd);
+		if (len == -1)
+			return (-1);
+		nbr *= -1;
 	}
-	if (num > 9)
+	if (nbr / 10 != 0)
 	{
-		flag += ft_putnbr_fd(num / 10, fd);
-		flag += ft_putchar_fd(num % 10 + '0', fd);
+		flag = ft_putnbr_fd(nbr / 10, fd);
+		if (flag == -1)
+			return (-1);
+		len += flag;
 	}
-	if (num <= 9)
-		flag += ft_putchar_fd(num % 10 + '0', fd);
-	return (flag);
+	flag = ft_putchar_fd(nbr % 10 + '0', fd);
+	if (flag == -1)
+		return (-1);
+	return (len += flag);
 }
