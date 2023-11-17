@@ -6,7 +6,7 @@
 /*   By: tgeorgie <tgeorgie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:11:19 by tgeorgie          #+#    #+#             */
-/*   Updated: 2023/11/16 14:53:39 by tgeorgie         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:59:51 by tgeorgie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static int	f_print_options(va_list args, const char *str, int len, int i)
 			len++;
 			i++;
 		}
-		
 	}
 	return (len);
 }
