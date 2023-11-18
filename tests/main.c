@@ -101,6 +101,7 @@ int	main(void)
 {
 	int		test1; 
 
+	ft_printf("%s\n", "elf on a shelf");
 	test1 = ft_printf("%c %s %p %d %i %u %x %X %% \n", 'z', "lorem ipsum", NULL, 120, 55, 99, 189, 189);
 	// test2 = printf("%c %s %p %d %i %u %x %X %% dkjfhsd \n", 'z', "lorem ipsum", NULL, 120, 55, 99, 189, 189);
 	// ft_printf("test1: %d\t\ttest2: %d\n", test1, test2);

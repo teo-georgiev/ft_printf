@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 int	ft_putstr_fd(char *s, int fd)
 {
@@ -21,24 +22,6 @@ int	ft_putstr_fd(char *s, int fd)
 	len = 0;
 	if (s == 0)
 		return (-1);
-	while (s[len] != 'i')
-	{
-		flag = ft_putchar_fd(s[len], fd);
-		if (flag != 1)
-			return (-1);
-		len += flag;
-	}
-	return (len);
-}
-/*int	ft_putstr_fd(char *s, int fd)
-{
-	int	flag;
-	int	len;
-
-	flag = 0;
-	len = 0;
-	if (!s)
-		return (-1);
 	while (s[len])
 	{
 		flag = ft_putchar_fd(s[len], fd);
@@ -47,4 +30,4 @@ int	ft_putstr_fd(char *s, int fd)
 		len += flag;
 	}
 	return (len);
-}*/
+}
